@@ -1,4 +1,4 @@
-package com.lmc.init;
+package com.lmc.property.init;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;

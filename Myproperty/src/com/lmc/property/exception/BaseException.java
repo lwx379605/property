@@ -1,4 +1,4 @@
-package com.lmc.exception;
+package com.lmc.property.exception;
 
 public class BaseException extends RuntimeException{
 

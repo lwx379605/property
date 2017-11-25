@@ -1,4 +1,4 @@
-package com.lmc.service;
+package com.lmc.property.service;
 
 public interface BaseInterface {
 

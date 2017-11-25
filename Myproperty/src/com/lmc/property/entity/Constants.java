@@ -1,4 +1,4 @@
-package com.lmc.entity;
+package com.lmc.property.entity;
 
 public final class Constants {
 	

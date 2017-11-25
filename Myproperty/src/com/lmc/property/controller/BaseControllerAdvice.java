@@ -1,11 +1,11 @@
-package com.lmc.controller;
+package com.lmc.property.controller;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import com.lmc.exception.BaseException;
+import com.lmc.property.exception.BaseException;
 
 @ControllerAdvice
 public class BaseControllerAdvice {

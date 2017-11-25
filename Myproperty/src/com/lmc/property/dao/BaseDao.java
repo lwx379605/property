@@ -1,4 +1,4 @@
-package com.lmc.dao;
+package com.lmc.property.dao;
 
 public interface BaseDao {
 
