@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/member")
-public class IndexController {
+public class IndexController extends BaseController{
 	
 	@RequestMapping("/index")
 	public String index(){
