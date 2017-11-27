@@ -2,14 +2,14 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 
-	<display-name>my property</display-name>
+	<display-name>myperproty</display-name>
 	<description>物业系统</description>
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath*:/applicationContext.xml,
-			classpath*:/applicationContext-shiro.xml
+			classpath*:/applicationContext.xml
+	<!-- 		classpath*:/applicationContext-shiro.xml -->
 		</param-value>
 	</context-param>
 
@@ -42,9 +42,19 @@
 	</filter>
 
 	<filter>
+		<filter-name>requestContextFilter</filter-name>
+		<filter-class>org.springframework.web.filter.RequestContextFilter</filter-class>
+	</filter>
+
+	<filter>
+		<filter-name>openEntityManagerInViewFilter</filter-name>
+		<filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+	</filter>
+
+<!-- 	<filter>
 		<filter-name>shiroFilter</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	</filter>
+	</filter> -->
 
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
@@ -67,9 +77,14 @@
 	</filter-mapping>
 
 	<filter-mapping>
-		<filter-name>shiroFilter</filter-name>
+		<filter-name>openEntityManagerInViewFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+
+<!-- 	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> -->
 
 	<servlet>
 		<servlet-name>springmvc</servlet-name>

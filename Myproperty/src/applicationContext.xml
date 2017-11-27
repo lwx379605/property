@@ -11,7 +11,7 @@
 
 	<context:property-placeholder location="classpath*:/property.properties" ignore-resource-not-found="true" ignore-unresolvable="true" />
 
-	<context:component-scan base-package="net.shopxx">
+	<context:component-scan base-package="com.lmc.property">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
@@ -51,7 +51,7 @@
 				<prop key="javax.persistence.validation.mode">none</prop>
 				<prop key="hibernate.search.analyzer">net.shopxx.AnsjAnalyzer</prop>
 				<prop key="hibernate.search.default.directory_provider">filesystem</prop>
-				<prop key="hibernate.search.default.indexBase">${java.io.tmpdir}/jiuyishop_index</prop>
+				<prop key="hibernate.search.default.indexBase">${java.io.tmpdir}/myproperty_index</prop>
 			</props>
 		</property>
 	</bean>
@@ -82,22 +82,6 @@
 
 	<cache:annotation-driven cache-manager="cacheManager" />
 
-	<bean class="org.springframework.cache.ehcache.EhCacheFactoryBean" lazy-init="false">
-		<property name="cacheManager" ref="ehCacheManager" />
-		<property name="cacheName" value="articleHits" />
-		<property name="cacheEventListeners">
-			<ref bean="cacheEventListener" />
-		</property>
-	</bean>
-
-	<bean class="org.springframework.cache.ehcache.EhCacheFactoryBean" lazy-init="false">
-		<property name="cacheManager" ref="ehCacheManager" />
-		<property name="cacheName" value="productHits" />
-		<property name="cacheEventListeners">
-			<ref bean="cacheEventListener" />
-		</property>
-	</bean>
-
 	<bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
 		<property name="templateLoaderPaths">
 			<array>
@@ -125,40 +109,6 @@
 			<map>
 				<entry key="base" value="#{servletContext.contextPath}" />
 				<entry key="showPowered" value="#{${show_powered}}" />
-				<entry key="message" value-ref="messageMethod" />
-				<entry key="abbreviate" value-ref="abbreviateMethod" />
-				<entry key="currency" value-ref="currencyMethod" />
-				<entry key="flash_message" value-ref="flashMessageDirective" />
-				<entry key="pagination" value-ref="paginationDirective" />
-				<entry key="seo" value-ref="seoDirective" />
-				<entry key="ad_position" value-ref="adPositionDirective" />
-				<entry key="member_attribute_list" value-ref="memberAttributeListDirective" />
-				<entry key="business_attribute_list" value-ref="businessAttributeListDirective" />
-				<entry key="navigation_list" value-ref="navigationListDirective" />
-				<entry key="friend_link_list" value-ref="friendLinkListDirective" />
-				<entry key="brand_list" value-ref="brandListDirective" />
-				<entry key="attribute_list" value-ref="attributeListDirective" />
-				<entry key="article_list" value-ref="articleListDirective" />
-				<entry key="article_category_root_list" value-ref="articleCategoryRootListDirective" />
-				<entry key="article_category_parent_list" value-ref="articleCategoryParentListDirective" />
-				<entry key="article_category_children_list" value-ref="articleCategoryChildrenListDirective" />
-				<entry key="article_tag_list" value-ref="articleTagListDirective" />
-				<entry key="product_list" value-ref="productListDirective" />
-				<entry key="product_count" value-ref="productCountDirective" />
-				<entry key="product_category_root_list" value-ref="productCategoryRootListDirective" />
-				<entry key="product_category_parent_list" value-ref="productCategoryParentListDirective" />
-				<entry key="product_category_children_list" value-ref="productCategoryChildrenListDirective" />
-				<entry key="store_product_category_root_list" value-ref="storeProductCategoryRootListDirective" />
-				<entry key="store_product_category_parent_list" value-ref="storeProductCategoryParentListDirective" />
-				<entry key="store_product_category_children_list" value-ref="storeProductCategoryChildrenListDirective" />
-				<entry key="product_tag_list" value-ref="productTagListDirective" />
-				<entry key="product_favorite" value-ref="productFavoriteDirective" />
-				<entry key="store_favorite" value-ref="storeFavoriteDirective" />
-				<entry key="review_list" value-ref="reviewListDirective" />
-				<entry key="consultation_list" value-ref="consultationListDirective" />
-				<entry key="promotion_list" value-ref="promotionListDirective" />
-				<entry key="promotion_plugin" value-ref="promotionPluginDirective" />
-				<entry key="order_count" value-ref="orderCountDirective" />
 			</map>
 		</property>
 	</bean>
@@ -171,7 +121,7 @@
 
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.FixedLocaleResolver" />
 
-	<bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
+<!-- 	<bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
 		<property name="config">
 			<bean class="com.google.code.kaptcha.util.Config">
 				<constructor-arg>
@@ -192,9 +142,9 @@
 				</constructor-arg>
 			</bean>
 		</property>
-	</bean>
+	</bean> -->
 
-	<bean id="captchaFilter" class="net.shopxx.captcha.CaptchaFilter" scope="prototype" />
+<!-- 	<bean id="captchaFilter" class="net.shopxx.captcha.CaptchaFilter" scope="prototype" /> -->
 
 	<task:executor id="taskExecutor" pool-size="${task.pool_size}" queue-capacity="${task.queue_capacity}" />
 
