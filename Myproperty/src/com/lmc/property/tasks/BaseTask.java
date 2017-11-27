@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class BaseTask {
 	
-	 @Scheduled(cron="0/5 * *  * * ? ")//Ã¿5ÃëÖ´ĞĞÒ»´Î 
+	 @Scheduled(cron="0 0 0/1 * * ?")//Bä»»åŠ¡æ¯1å°æ—¶æ‰§è¡Œä¸€æ¬¡è¿›å…¥æµ‹è¯•
      public void work() {
          // task execution logic
 		 DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");    
-         System.out.println(sdf.format(new Date())+"*********BÈÎÎñÃ¿5ÃëÖ´ĞĞÒ»´Î½øÈë²âÊÔ");  
+         System.out.println(sdf.format(new Date())+"*********Bä»»åŠ¡æ¯1å°æ—¶æ‰§è¡Œä¸€æ¬¡è¿›å…¥æµ‹è¯•");  
      }
 
 }

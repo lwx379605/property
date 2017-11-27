@@ -5,7 +5,7 @@
 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd"
 	default-lazy-init="true">
 
-	<context:property-placeholder location="classpath*:/property.properties" ignore-resource-not-found="true" ignore-unresolvable="true" />
+	<context:property-placeholder location="classpath*:/setting.properties" ignore-resource-not-found="true" ignore-unresolvable="true" />
 
 	<context:component-scan base-package="com.lmc.property" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
@@ -53,7 +53,10 @@
 			<mvc:mapping path="/base/**" />
 			<bean class="com.lmc.property.interceptor.BaseInterceptor"></bean>
 		</mvc:interceptor> 
-		
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.lmc.property.interceptor.ValidateInterceptor" />
+		</mvc:interceptor>
 	</mvc:interceptors>
 
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">

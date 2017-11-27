@@ -13,6 +13,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.commons.lang.time.DateUtils;
 
+import com.lmc.property.entity.Constants;
+
 /**
  * Editor - 日期
  * 
@@ -21,7 +23,6 @@ import org.apache.commons.lang.time.DateUtils;
  */
 public class DateEditor extends PropertyEditorSupport {
 
-	public static final String[] DATE_PATTERNS = new String[] { "yyyy", "yyyy-MM", "yyyyMM", "yyyy/MM", "yyyy-MM-dd", "yyyyMMdd", "yyyy/MM/dd", "yyyy-MM-dd HH:mm:ss", "yyyyMMddHHmmss", "yyyy/MM/dd HH:mm:ss" };
 	/**
 	 * 默认日期格式
 	 */
@@ -85,7 +86,7 @@ public class DateEditor extends PropertyEditorSupport {
 				setValue(null);
 			} else {
 				try {
-					setValue(DateUtils.parseDate(value, DATE_PATTERNS));
+					setValue(DateUtils.parseDate(value, Constants.DATE_PATTERNS));
 				} catch (ParseException e) {
 					setValue(null);
 				}

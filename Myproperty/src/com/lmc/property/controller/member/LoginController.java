@@ -3,7 +3,7 @@ package com.lmc.property.controller.member;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+@Controller("memberLoginController")
 @RequestMapping("/member")
 public class LoginController extends BaseController{
 	

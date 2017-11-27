@@ -27,14 +27,14 @@
 			<map>
 				<entry key="memberAuthc">
 					<bean class="com.lmc.property.security.AuthenticationFilter">
-						<property name="userClass" value="com.lmc.property.entity.Member" />
+						<!-- <property name="userClass" value="com.lmc.property.entity.Member" /> -->
 						<property name="loginUrl" value="/member/login" />
 						<property name="successUrl" value="/member/index" />
 					</bean>
 				</entry>
 				<entry key="adminAuthc">
 					<bean class="com.lmc.property.security.AuthenticationFilter">
-						<property name="userClass" value="com.lmc.property.entity.Admin" />
+						<!-- <property name="userClass" value="com.lmc.property.entity.Admin" /> -->
 						<property name="loginUrl" value="/admin/login" />
 						<property name="successUrl" value="/admin/index" />
 					</bean>
@@ -51,7 +51,7 @@
 		<property name="cacheManager" ref="shiroCacheManager" />
 	</bean>
 
-	<bean id="authorizingRealm" class="net.shopxx.security.AuthorizingRealm">
+	<bean id="authorizingRealm" class="com.lmc.property.security.AuthorizingRealm">
 		<property name="authorizationCacheName" value="authorization" />
 	</bean>
 

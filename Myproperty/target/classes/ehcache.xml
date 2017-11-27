@@ -8,4 +8,5 @@
 	<cache name="pluginConfig" maxElementsInMemory="100" eternal="true" overflowToDisk="true" />
 	<cache name="messageConfig" maxElementsInMemory="100" eternal="true" overflowToDisk="true" />
 	<cache name="index" maxElementsInMemory="100" timeToIdleSeconds="60" timeToLiveSeconds="60" eternal="false" overflowToDisk="true" />
+	<cache name="authorization" maxElementsInMemory="1000000" timeToIdleSeconds="3600" timeToLiveSeconds="86400" eternal="false" overflowToDisk="true" />
 </ehcache>
