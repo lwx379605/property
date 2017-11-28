@@ -35,8 +35,7 @@ import com.lmc.property.listener.AuditingEntityListener;
 /**
  * Entity - 基类
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
  */
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass

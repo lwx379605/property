@@ -8,8 +8,7 @@ package com.lmc.property;
 /**
  * Analyzer - Ansj
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
  */
 public class AnsjAnalyzer extends org.ansj.lucene5.AnsjAnalyzer {
 

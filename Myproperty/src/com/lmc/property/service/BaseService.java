@@ -18,8 +18,8 @@ import com.lmc.property.entity.BaseEntity;
 /**
  * Service - 基类
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
+ * 
  */
 public interface BaseService<T extends BaseEntity<ID>, ID extends Serializable> {
 

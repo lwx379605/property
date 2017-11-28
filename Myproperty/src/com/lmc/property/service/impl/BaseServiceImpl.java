@@ -26,14 +26,12 @@ import com.lmc.property.Pageable;
 import com.lmc.property.dao.BaseDao;
 import com.lmc.property.entity.BaseEntity;
 import com.lmc.property.service.BaseService;
-import com.lmc.property.service.TestService;
 
 
 /**
  * Service - 基类
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
  */
 @Transactional
 public abstract class BaseServiceImpl<T extends BaseEntity<ID>, ID extends Serializable> implements BaseService<T, ID> {

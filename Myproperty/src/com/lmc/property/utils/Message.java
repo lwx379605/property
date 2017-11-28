@@ -10,8 +10,8 @@ package com.lmc.property.utils;
 /**
  * 消息
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
+ * 
  */
 public class Message {
 

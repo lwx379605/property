@@ -21,8 +21,7 @@ import org.hibernate.search.annotations.Store;
 /**
  * Entity - 排序基类
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
  */
 @MappedSuperclass
 public abstract class OrderedEntity<ID extends Serializable> extends BaseEntity<ID> implements Comparable<OrderedEntity<ID>> {

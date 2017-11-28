@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import com.lmc.property.event.BaseEvent;
 import com.lmc.property.service.TestService;
 
+/**
+ * @author 李敏成
+ *
+ */
 @Service
 public class TestServiceImpl  implements TestService{
 	

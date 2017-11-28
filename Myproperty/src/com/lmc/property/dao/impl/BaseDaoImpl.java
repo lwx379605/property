@@ -44,8 +44,7 @@ import com.lmc.property.entity.OrderedEntity;
 /**
  * Dao - 基类
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
  */
 public abstract class BaseDaoImpl<T extends BaseEntity<ID>, ID extends Serializable> implements BaseDao<T, ID> {
 

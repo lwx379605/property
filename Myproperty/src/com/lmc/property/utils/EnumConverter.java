@@ -11,8 +11,8 @@ import org.springframework.util.Assert;
 /**
  * 枚举类型转换
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
+ * 
  */
 public class EnumConverter extends AbstractConverter {
 

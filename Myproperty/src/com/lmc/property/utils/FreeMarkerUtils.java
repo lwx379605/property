@@ -36,8 +36,8 @@ import freemarker.template.utility.DeepUnwrap;
 /**
  * Utils - FreeMarker
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
+ * 
  */
 public final class FreeMarkerUtils {
 

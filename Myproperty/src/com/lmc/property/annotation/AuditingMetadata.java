@@ -24,8 +24,7 @@ import com.lmc.property.utils.BeanUtils;
 /**
  * Audit - 审计元数据
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
  */
 public final class AuditingMetadata {
 

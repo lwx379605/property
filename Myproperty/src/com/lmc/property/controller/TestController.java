@@ -14,6 +14,11 @@ import com.lmc.property.entity.Member;
 import com.lmc.property.service.TestService;
 import com.lmc.property.service.MemberService;
 
+/**
+ * 
+ * @author 李敏成
+ *
+ */
 @Controller
 @RequestMapping("/base")
 public class TestController {

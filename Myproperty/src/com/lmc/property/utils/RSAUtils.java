@@ -40,8 +40,8 @@ import org.springframework.util.Assert;
 /**
  * Utils - RSA加密/解密
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
+ * 
  */
 public final class RSAUtils {
 

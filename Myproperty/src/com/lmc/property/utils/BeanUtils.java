@@ -26,8 +26,7 @@ import org.springframework.util.Assert;
 /**
  * Utils - Bean
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
  */
 public final class BeanUtils {
 

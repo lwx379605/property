@@ -15,8 +15,8 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 /**
  * 分页信息
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
+ * 
  */
 public class Pageable implements Serializable {
 

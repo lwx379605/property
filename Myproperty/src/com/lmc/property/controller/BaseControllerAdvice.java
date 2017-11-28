@@ -17,7 +17,11 @@ import com.lmc.property.utils.DateEditor;
 import com.lmc.property.utils.StringEditor;
 
 
-
+/**
+ * 
+ * @author 李敏成
+ *
+ */
 @ControllerAdvice("com.lmc.property.controller")
 public class BaseControllerAdvice {
 	

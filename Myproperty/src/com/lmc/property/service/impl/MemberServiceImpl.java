@@ -9,6 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.lmc.property.entity.Member;
 import com.lmc.property.service.MemberService;
 
+/**
+ * @author 李敏成
+ *
+ */
 @Service
 public class MemberServiceImpl implements MemberService {
 	@PersistenceContext

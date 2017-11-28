@@ -30,8 +30,8 @@ import freemarker.template.TemplateException;
 /**
  * 系统设置
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
+ * 
  */
 public class Setting implements Serializable {
 

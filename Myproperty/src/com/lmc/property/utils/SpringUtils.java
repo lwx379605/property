@@ -19,8 +19,8 @@ import org.springframework.web.servlet.LocaleResolver;
 /**
  * Utils - Spring
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
+ *
  */
 @Lazy(false)
 @Component

@@ -21,8 +21,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 /**
  * Entity - 管理员
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
  */
 @Entity
 public class Admin extends User {

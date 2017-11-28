@@ -16,8 +16,8 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 /**
  * Interceptor - 验证
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
+ * 
  */
 public class ValidateInterceptor extends HandlerInterceptorAdapter {
 

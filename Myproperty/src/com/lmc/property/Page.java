@@ -16,8 +16,8 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 /**
  * 分页
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
+ * 
  */
 public class Page<T> implements Serializable {
 

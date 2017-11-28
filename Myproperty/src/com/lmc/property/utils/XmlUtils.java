@@ -27,8 +27,8 @@ import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 /**
  * Utils - XML
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
+ * 
  */
 public final class XmlUtils {
 

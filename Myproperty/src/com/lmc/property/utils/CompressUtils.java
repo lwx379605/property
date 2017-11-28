@@ -33,7 +33,7 @@ import org.springframework.util.Assert;
 /**
  * Utils - 压缩/解压缩
  * 
- * @author SHOP++ Team
+ * @author 李敏成
  * @version 5.0
  */
 public final class CompressUtils {

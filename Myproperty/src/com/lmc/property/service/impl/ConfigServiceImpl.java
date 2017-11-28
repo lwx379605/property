@@ -22,6 +22,11 @@ import freemarker.template.Configuration;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModelException;
 
+/**
+ * 
+ * @author 李敏成
+ *
+ */
 @Component
 public class ConfigServiceImpl implements ConfigService {
 	

@@ -13,8 +13,8 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 /**
  * 模板配置
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
+ * 
  */
 public class TemplateConfig implements Serializable {
 

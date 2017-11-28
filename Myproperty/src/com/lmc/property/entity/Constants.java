@@ -1,5 +1,10 @@
 package com.lmc.property.entity;
 
+/**
+ * 
+ * @author 李敏成
+ *
+ */
 public final class Constants {
 	
 	/**

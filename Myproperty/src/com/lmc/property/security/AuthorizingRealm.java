@@ -6,6 +6,10 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.subject.PrincipalCollection;
 
+/**
+ * @author 李敏成
+ *
+ */
 public class AuthorizingRealm extends org.apache.shiro.realm.AuthorizingRealm {
 
 	@Override

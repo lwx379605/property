@@ -13,8 +13,8 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 /**
  * 排序
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
+ * 
  */
 public class Order implements Serializable {
 

@@ -13,8 +13,7 @@ import java.lang.annotation.Target;
 /**
  * Audit - 创建日期注解
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(value = { ElementType.FIELD, ElementType.METHOD })

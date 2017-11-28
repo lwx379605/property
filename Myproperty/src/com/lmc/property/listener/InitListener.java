@@ -10,7 +10,10 @@ import org.springframework.stereotype.Component;
 
 import com.lmc.property.service.ConfigService;
 
-
+/**
+ * @author 李敏成
+ *
+ */
 @Component
 public class InitListener{
 	

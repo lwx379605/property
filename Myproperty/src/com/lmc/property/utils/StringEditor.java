@@ -13,6 +13,7 @@ import org.apache.commons.lang.StringUtils;
  * Editor - 字符串
  * 
  * @author 李敏成
+ * 
  */
 public class StringEditor extends PropertyEditorSupport {
 

@@ -24,8 +24,8 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 /**
  * Utils - JSON
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
+ * 
  */
 public final class JsonUtils {
 

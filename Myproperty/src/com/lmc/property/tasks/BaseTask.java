@@ -8,6 +8,10 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author 李敏成
+ *
+ */
 @Lazy(false)
 @Component
 public class BaseTask {

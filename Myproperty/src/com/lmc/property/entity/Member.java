@@ -30,8 +30,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 /**
  * Entity - 会员
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
+ * 
  */
 @Entity
 public class Member extends User {

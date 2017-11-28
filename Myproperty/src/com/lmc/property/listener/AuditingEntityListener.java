@@ -19,8 +19,7 @@ import com.lmc.property.annotation.AuditingMetadata;
 /**
  * Audit - 审计实体类监听器
  * 
- * @author SHOP++ Team
- * @version 5.0
+ * @author 李敏成
  */
 public class AuditingEntityListener {
 

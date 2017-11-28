@@ -5,6 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * 
+ * @author 李敏成
+ *
+ */
 @Controller
 @RequestMapping("/member/register")
 public class RegisterController extends BaseController{

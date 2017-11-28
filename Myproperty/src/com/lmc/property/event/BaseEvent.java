@@ -2,6 +2,10 @@ package com.lmc.property.event;
 
 import org.springframework.context.ApplicationEvent;
 
+/**
+ * @author 李敏成
+ *
+ */
 public class BaseEvent extends ApplicationEvent{
 
 	/**
