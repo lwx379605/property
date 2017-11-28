@@ -10,10 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.lmc.property.service.BaseService;
-import com.lmc.property.service.MemberService;
 import com.lmc.property.entity.Member;
-import com.mysql.fabric.xmlrpc.base.Value;
+import com.lmc.property.service.TestService;
+import com.lmc.property.service.MemberService;
 
 @Controller
 @RequestMapping("/base")
@@ -21,7 +20,7 @@ public class TestController {
 	@Inject
 	MemberService ms;
 	@Inject
-	BaseService  bs;
+	TestService  bs;
 	
 	@RequestMapping({"","/"})
 	public ResponseEntity<String> hander(@ModelAttribute(binding=false) Member abs){

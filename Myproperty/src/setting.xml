@@ -29,7 +29,7 @@
 	<setting name="smtpFromMail" value="2545189721@qq.com" />
 	<setting name="currencySign" value="￥" />
 	<setting name="currencyUnit" value="元" />
-	<setting name="isDevelopmentEnabled" value="false" />
+	<setting name="isDevelopmentEnabled" value="true" />
 	<setting name="cookiePath" value="/" />
 	<setting name="cookieDomain" value="" />
 	<setting name="locale" value="zh_CN" />

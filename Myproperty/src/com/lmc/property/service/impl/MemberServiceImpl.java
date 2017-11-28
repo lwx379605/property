@@ -1,6 +1,5 @@
 package com.lmc.property.service.impl;
 
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
