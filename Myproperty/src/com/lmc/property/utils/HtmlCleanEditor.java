@@ -15,17 +15,17 @@ import org.jsoup.safety.Whitelist;
  * Editor - HTML清理
  * 
  * @author 李敏成
- * @version 5.0
+ * 
  */
 public class HtmlCleanEditor extends PropertyEditorSupport {
 
 	/**
-	 * 默认白名�?
+	 * 默认白名单
 	 */
 	public static final Whitelist DEFAULT_WHITELIST = Whitelist.none();
 
 	/**
-	 * 宽松白名�?
+	 * 宽松白名单
 	 */
 	public static final Whitelist RELAXED_WHITELIST;
 
@@ -77,12 +77,12 @@ public class HtmlCleanEditor extends PropertyEditorSupport {
 	private boolean emptyAsNull;
 
 	/**
-	 * 白名�?
+	 * 白名单
 	 */
 	private Whitelist whitelist = DEFAULT_WHITELIST;
 
 	/**
-	 * 构�?�方�?
+	 * 构造方法
 	 * 
 	 * @param trim
 	 *            是否移除两端空白
@@ -95,14 +95,14 @@ public class HtmlCleanEditor extends PropertyEditorSupport {
 	}
 
 	/**
-	 * 构�?�方�?
+	 * 构造方法
 	 * 
 	 * @param trim
 	 *            是否移除两端空白
 	 * @param emptyAsNull
 	 *            是否将空转换为null
 	 * @param whitelist
-	 *            白名�?
+	 *            白名单
 	 */
 	public HtmlCleanEditor(boolean trim, boolean emptyAsNull, Whitelist whitelist) {
 		this.trim = trim;

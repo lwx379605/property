@@ -66,11 +66,5 @@ public class BaseControllerAdvice {
 	public String exceptionHandler(UnauthorizedException unauthorizedException) {
 		return "common/error/unauthorized";
 	}
-	
-	@ModelAttribute
-	public void modelAttribute(){
-		
-	}
-	 
 
 }

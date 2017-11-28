@@ -31,7 +31,7 @@
 
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="net.shopxx.entity" />
+		<property name="packagesToScan" value="com.lmc.property.entity" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="showSql" value="false" />
@@ -49,7 +49,7 @@
 				<prop key="hibernate.connection.isolation">2</prop>
 				<prop key="hibernate.connection.release_mode">on_close</prop>
 				<prop key="javax.persistence.validation.mode">none</prop>
-				<prop key="hibernate.search.analyzer">net.shopxx.AnsjAnalyzer</prop>
+				<prop key="hibernate.search.analyzer">com.lmc.property.AnsjAnalyzer</prop>
 				<prop key="hibernate.search.default.directory_provider">filesystem</prop>
 				<prop key="hibernate.search.default.indexBase">${java.io.tmpdir}/myproperty_index</prop>
 			</props>
