@@ -44,6 +44,8 @@ public class TestController {
 		member.setGender(Member.Gender.male);
 		member.setAmount(new BigDecimal(0));
 		member.setBalance(new BigDecimal(0));
+		member.setIsEnabled(false);
+		member.setIsLocked(false);
 		ms.save(member);
 		return "/index";
 	}

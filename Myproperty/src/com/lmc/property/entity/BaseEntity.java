@@ -29,6 +29,7 @@ import org.hibernate.search.annotations.Store;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.lmc.property.annotation.CreatedDate;
 import com.lmc.property.annotation.LastModifiedDate;
+import com.lmc.property.listener.AuditingEntityListener;
 
 
 /**
@@ -37,7 +38,7 @@ import com.lmc.property.annotation.LastModifiedDate;
  * @author SHOP++ Team
  * @version 5.0
  */
-//@EntityListeners(AuditingEntityListener.class)
+@EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
 public abstract class BaseEntity<ID extends Serializable> implements Serializable {
 
