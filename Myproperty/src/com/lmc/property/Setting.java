@@ -371,6 +371,16 @@ public class Setting implements Serializable {
 	 */
 	@NotNull
 	private Setting.Locale locale;
+
+	@NotNull
+	@Length(max = 200)
+	private String appID;
+
+	@NotNull
+	private String privateKey;
+
+	@NotNull
+	private String publicKey;
 	
 	/**
 	 * 获取网站名称
@@ -1204,4 +1214,29 @@ public class Setting implements Serializable {
 		return HashCodeBuilder.reflectionHashCode(this);
 	}
 
+	public String getAppID() {
+		return appID;
+		
+	}
+
+	public String getPrivateKey() {
+		return privateKey;
+	}
+
+	public String getPublicKey() {
+		return publicKey;
+		
+	}
+
+	public void setAppID(String appID) {
+		this.appID = appID;
+	}
+
+	public void setPrivateKey(String privateKey) {
+		this.privateKey = privateKey;
+	}
+
+	public void setPublicKey(String publicKey) {
+		this.publicKey = publicKey;
+	}
 }

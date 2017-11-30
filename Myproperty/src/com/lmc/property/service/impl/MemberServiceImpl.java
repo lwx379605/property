@@ -6,7 +6,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.lmc.property.entity.Member;
+import com.lmc.property.entity.Renter;
 import com.lmc.property.service.MemberService;
 
 /**
@@ -19,7 +19,7 @@ public class MemberServiceImpl implements MemberService {
 	private EntityManager manager;
 	
 	@Transactional
-	public void save(Member member){
+	public void save(Renter member){
 		manager.persist(member);
 	}
 }

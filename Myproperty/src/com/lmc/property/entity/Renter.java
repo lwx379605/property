@@ -28,13 +28,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 
 /**
- * Entity - 会员
+ * Entity - 租户
  * 
  * @author 李敏成
  * 
  */
 @Entity
-public class Member extends User {
+public class Renter extends User {
 
 	private static final long serialVersionUID = 1533130686714725835L;
 
@@ -106,12 +106,6 @@ public class Member extends User {
 	private String mobile;
 
 	/**
-	 * 余额
-	 */
-	@Column(nullable = false, precision = 27, scale = 12)
-	private BigDecimal balance;
-
-	/**
 	 * 消费金额
 	 */
 	@Column(nullable = false, precision = 27, scale = 12)
@@ -126,7 +120,7 @@ public class Member extends User {
 	/**
 	 * 性别
 	 */
-	private Member.Gender gender;
+	private Renter.Gender gender;
 
 	/**
 	 * 出生日期
@@ -250,16 +244,6 @@ public class Member extends User {
 	}
 
 	/**
-	 * 设置余额
-	 * 
-	 * @param balance
-	 *            余额
-	 */
-	public void setBalance(BigDecimal balance) {
-		this.balance = balance;
-	}
-
-	/**
 	 * 获取消费金额
 	 * 
 	 * @return 消费金额
@@ -302,7 +286,7 @@ public class Member extends User {
 	 * 
 	 * @return 性别
 	 */
-	public Member.Gender getGender() {
+	public Renter.Gender getGender() {
 		return gender;
 	}
 
@@ -312,7 +296,7 @@ public class Member extends User {
 	 * @param gender
 	 *            性别
 	 */
-	public void setGender(Member.Gender gender) {
+	public void setGender(Renter.Gender gender) {
 		this.gender = gender;
 	}
 

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.lmc.property.entity.Member;
+import com.lmc.property.entity.Renter;
 import com.lmc.property.service.TestService;
 import com.lmc.property.service.MemberService;
 
@@ -28,26 +28,25 @@ public class TestController {
 	TestService  bs;
 	
 	@RequestMapping({"","/"})
-	public ResponseEntity<String> hander(@ModelAttribute(binding=false) Member abs){
+	public ResponseEntity<String> hander(@ModelAttribute(binding=false) Renter abs){
 		System.out.println(abs);
 		bs.publishEvent();
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 	
 	@RequestMapping("test")
-	public String hander1(@ModelAttribute(binding=true) Member abs){
+	public String hander1(@ModelAttribute(binding=true) Renter abs){
 		System.out.println(abs);
 		return "/index";
 	}
 	@RequestMapping("test1")
 	public String hande(){
-		Member member = new Member();
+		Renter member = new Renter();
 		member.setUsername("admin");
 		member.setPassword("123456");
 		member.setMobile("17682344359");
-		member.setGender(Member.Gender.male);
+		member.setGender(Renter.Gender.male);
 		member.setAmount(new BigDecimal(0));
-		member.setBalance(new BigDecimal(0));
 		member.setIsEnabled(false);
 		member.setIsLocked(false);
 		ms.save(member);
