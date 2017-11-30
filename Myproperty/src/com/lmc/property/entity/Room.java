@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -73,6 +74,9 @@ public class Room extends OrderedEntity<Long> {
 	@Length(max=128)
 	@Column(nullable = false)
 	private String address;
+	
+	@ManyToMany
+	private Set<Renter> renters;
 
 	public Community getCommunity() {
 		return community;
@@ -136,6 +140,14 @@ public class Room extends OrderedEntity<Long> {
 
 	public void setAliRoomID(String aliRoomID) {
 		this.aliRoomID = aliRoomID;
+	}
+
+	public Set<Renter> getRenters() {
+		return renters;
+	}
+
+	public void setRenters(Set<Renter> renters) {
+		this.renters = renters;
 	}
 	
 }
