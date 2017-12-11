@@ -1,9 +1,11 @@
 package com.lmc.property.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -17,6 +19,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author 李敏成
  *
  */
+@Entity
 public class Room extends OrderedEntity<Long> {
 
 	/**
@@ -75,8 +78,8 @@ public class Room extends OrderedEntity<Long> {
 	@Column(nullable = false)
 	private String address;
 	
-	@ManyToMany
-	private Set<Renter> renters;
+	@ManyToMany(mappedBy="rooms")
+	private Set<Renter> renters=new HashSet<>();;
 
 	public Community getCommunity() {
 		return community;

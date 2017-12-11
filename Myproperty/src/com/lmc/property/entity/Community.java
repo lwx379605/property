@@ -5,16 +5,23 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.Converter;
+import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.lmc.property.BaseAttributeConverter;
+
 
 /**
  * 
  * @author 李敏成
  *
  */
+@Entity
 public class Community extends OrderedEntity<Long>{
 
 	/**
@@ -67,11 +74,13 @@ public class Community extends OrderedEntity<Long>{
 	 */
 	@NotEmpty
 	@Column(nullable = false)
+	@Convert(converter = CommunityLocationConverter.class)
 	private List<Location> communityLocations;
 	
 	/**
 	 * 关联点
 	 */
+	@Convert(converter = CommunityConverter.class)
 	private List<String> associatedPois;
 	
 	/**
@@ -153,5 +162,12 @@ public class Community extends OrderedEntity<Long>{
 	}
 	public void setAliCommunityId(String aliCommunityId) {
 		this.aliCommunityId = aliCommunityId;
+	}
+	@Converter
+	public static class CommunityConverter extends BaseAttributeConverter<List<String>> {
+	}
+	
+	@Converter
+	public static class CommunityLocationConverter extends BaseAttributeConverter<List<Location>> {
 	}
 }

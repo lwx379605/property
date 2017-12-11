@@ -9,9 +9,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import com.lmc.property.entity.Renter;
 import com.lmc.property.service.TestService;
+import com.lmc.property.utils.FreeMarkerUtils;
+import com.lmc.property.utils.SystemUtils;
 import com.lmc.property.service.MemberService;
 
 /**
@@ -20,15 +23,18 @@ import com.lmc.property.service.MemberService;
  *
  */
 @Controller
-@RequestMapping("/base")
+@RequestMapping("")
 public class TestController {
 	@Inject
 	MemberService ms;
 	@Inject
 	TestService  bs;
+	@Inject
+	private FreeMarkerConfigurer freeMarkerConfigurer;
 	
 	@RequestMapping({"","/"})
 	public ResponseEntity<String> hander(@ModelAttribute(binding=false) Renter abs){
+		System.out.println(freeMarkerConfigurer.getConfiguration().getSharedVariable("base"));
 		System.out.println(abs);
 		bs.publishEvent();
 		return new ResponseEntity<String>("success", HttpStatus.OK);
@@ -41,15 +47,16 @@ public class TestController {
 	}
 	@RequestMapping("test1")
 	public String hande(){
-		Renter member = new Renter();
-		member.setUsername("admin");
-		member.setPassword("123456");
-		member.setMobile("17682344359");
-		member.setGender(Renter.Gender.male);
-		member.setAmount(new BigDecimal(0));
-		member.setIsEnabled(false);
-		member.setIsLocked(false);
-		ms.save(member);
+		System.out.println(freeMarkerConfigurer.getConfiguration().getSharedVariable("base"));
+//		Renter member = new Renter();
+//		member.setUsername("admin");
+//		member.setPassword("123456");
+//		member.setMobile("17682344359");
+//		member.setGender(Renter.Gender.male);
+//		member.setAmount(new BigDecimal(0));
+//		member.setIsEnabled(false);
+//		member.setIsLocked(false);
+//		ms.save(member);
 		return "/index";
 	}
 	

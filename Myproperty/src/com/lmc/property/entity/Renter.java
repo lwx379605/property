@@ -147,7 +147,7 @@ public class Renter extends User {
 	private String phone;
 	
 	@ManyToMany
-	private Set<Room> rooms;
+	private Set<Room> rooms=new HashSet<>();;
 
 	/**
 	 * 获取用户名

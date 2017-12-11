@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 
@@ -14,6 +15,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author 李敏成
  *
  */
+@Entity
 public class Bill extends OrderedEntity<Long>{
 	
 	/**
@@ -89,7 +91,6 @@ public class Bill extends OrderedEntity<Long>{
 	 */
 	@NotEmpty
 	@ManyToOne
-	@Column(nullable = false)
 	private Room room;
 	
 	/**
@@ -124,6 +125,77 @@ public class Bill extends OrderedEntity<Long>{
 	 */
 	@Length(max=64)
 	private String remarkStr;
-	
+
+	public String getBatchID() {
+		return batchID;
+	}
+
+	public void setBatchID(String batchID) {
+		this.batchID = batchID;
+	}
+
+	public Bill.Type getType() {
+		return type;
+	}
+
+	public void setType(Bill.Type type) {
+		this.type = type;
+	}
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+
+	public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+
+	public Date getAcctPeriod() {
+		return acctPeriod;
+	}
+
+	public void setAcctPeriod(Date acctPeriod) {
+		this.acctPeriod = acctPeriod;
+	}
+
+	public Date getReleaseDay() {
+		return releaseDay;
+	}
+
+	public void setReleaseDay(Date releaseDay) {
+		this.releaseDay = releaseDay;
+	}
+
+	public Date getDeadline() {
+		return deadline;
+	}
+
+	public void setDeadline(Date deadline) {
+		this.deadline = deadline;
+	}
+
+	public String getRelateId() {
+		return relateId;
+	}
+
+	public void setRelateId(String relateId) {
+		this.relateId = relateId;
+	}
+
+	public String getRemarkStr() {
+		return remarkStr;
+	}
+
+	public void setRemarkStr(String remarkStr) {
+		this.remarkStr = remarkStr;
+	}
 	
 }

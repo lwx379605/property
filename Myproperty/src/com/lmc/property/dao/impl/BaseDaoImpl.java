@@ -8,6 +8,7 @@ package com.lmc.property.dao.impl;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -40,11 +41,11 @@ import com.lmc.property.dao.BaseDao;
 import com.lmc.property.entity.BaseEntity;
 import com.lmc.property.entity.OrderedEntity;
 
-
 /**
  * Dao - 基类
  * 
- * @author 李敏成
+ * @author SHOP++ Team
+ * @version 5.0
  */
 public abstract class BaseDaoImpl<T extends BaseEntity<ID>, ID extends Serializable> implements BaseDao<T, ID> {
 
@@ -754,20 +755,32 @@ public abstract class BaseDaoImpl<T extends BaseEntity<ID>, ID extends Serializa
 				if (Number.class.isAssignableFrom(path.getJavaType()) && value instanceof Number) {
 					restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.gt((Path<Number>) path, (Number) value));
 				}
+				if (Date.class.isAssignableFrom(path.getJavaType()) && value instanceof Date) {
+					restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.greaterThan((Path<Date>) path, (Date) value));
+				}
 				break;
 			case lt:
 				if (Number.class.isAssignableFrom(path.getJavaType()) && value instanceof Number) {
 					restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.lt((Path<Number>) path, (Number) value));
+				}
+				if (Date.class.isAssignableFrom(path.getJavaType()) && value instanceof Date) {
+					restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.lessThan((Path<Date>) path, (Date) value));
 				}
 				break;
 			case ge:
 				if (Number.class.isAssignableFrom(path.getJavaType()) && value instanceof Number) {
 					restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.ge((Path<Number>) path, (Number) value));
 				}
+				if (Date.class.isAssignableFrom(path.getJavaType()) && value instanceof Date) {
+					restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.greaterThanOrEqualTo((Path<Date>) path, (Date) value));
+				}
 				break;
 			case le:
 				if (Number.class.isAssignableFrom(path.getJavaType()) && value instanceof Number) {
 					restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.le((Path<Number>) path, (Number) value));
+				}
+				if (Date.class.isAssignableFrom(path.getJavaType()) && value instanceof Date) {
+					restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.lessThanOrEqualTo((Path<Date>) path, (Date) value));
 				}
 				break;
 			case like:
