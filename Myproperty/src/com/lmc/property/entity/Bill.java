@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -81,7 +82,7 @@ public class Bill extends OrderedEntity<Long>{
 	/**
 	 * 账单金额
 	 */
-	@NotEmpty
+	@NotNull
 	@Min(0)
 	@Column(nullable = false)
 	private BigDecimal amount;
