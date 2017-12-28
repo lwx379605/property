@@ -5,5 +5,7 @@ import com.lmc.property.entity.Bill;
 public interface BillService extends BaseService<Bill, Long> {
 
 	void uploadBill(Bill bill);
+	
+	void uploadBill(Long id);
 
 }

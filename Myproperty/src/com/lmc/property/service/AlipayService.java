@@ -3,20 +3,18 @@ package com.lmc.property.service;
 import org.springframework.stereotype.Component;
 
 import com.alipay.api.AlipayClient;
+import com.lmc.property.entity.Community;
 
 /**
  * 
  * @author 李敏成
  *
  */
-@Component
 public interface AlipayService {
 	
-	public final static String REQUEST_URL="https://openapi.alipaydev.com/gateway.do";
+	public void creat(Community community) ;
 	
-	public void creat(AlipayClient alipayClient) ;
-	
-	public void modify(AlipayClient alipayClient) ; 
+	public void modify(Community community) ; 
 	
 	public void batchQuerySn(AlipayClient alipayClient);
 	

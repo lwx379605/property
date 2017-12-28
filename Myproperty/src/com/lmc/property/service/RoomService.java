@@ -4,6 +4,8 @@ import com.lmc.property.entity.Room;
 
 public interface RoomService extends BaseService<Room, Long> {
 
-	void create(Room room);
+	void createRoom(Room room);
+	
+	void deleteRoom(Long id);
 	
 }

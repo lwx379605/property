@@ -40,7 +40,7 @@ public class RoomController extends BaseController {
 		if(!isValid(room)){
 			return null;
 		}
-		roomService.create(room);
+		roomService.createRoom(room);
 		return null;
 	}
 	

@@ -22,4 +22,9 @@ public final class Constants {
 	 */
 	public static final String SETTING_PROPERTIES_PATH = "/setting.properties";
 	
+	/**
+	 * 支付宝网关
+	 */
+	public final static String REQUEST_URL="https://openapi.alipaydev.com/gateway.do";
+	
 }
