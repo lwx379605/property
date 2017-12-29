@@ -42,6 +42,14 @@ public class Room extends OrderedEntity<Long> {
 	private String roomName;
 	
 	/**
+	 * 物业系统分配社区ID
+	 */
+	@NotEmpty
+	@Length(max=32)
+	@Column(unique=true	,nullable = false)
+	private String outRoomId;
+	
+	/**
 	 * 阿里系统分配房间id
 	 */
 	@NotEmpty
@@ -107,4 +115,13 @@ public class Room extends OrderedEntity<Long> {
 	public void setBuilding(Building building) {
 		this.building = building;
 	}
+
+	public String getOutRoomId() {
+		return outRoomId;
+	}
+
+	public void setOutRoomId(String outRoomId) {
+		this.outRoomId = outRoomId;
+	}
+
 }

@@ -60,11 +60,26 @@ public class Bill extends OrderedEntity<Long>{
 		 */
 		燃气费
 	}
+	
+	public enum Status{
+		FINISH_PAYMENT, // 用户完成支付和销账 
+		UNDER_PAYMENT, // 账单锁定待用户完成支付 
+		WAIT_PAYMENT, // 待缴且未过缴费截止日期 
+		OUT_OF_DATE // 未支付且已过缴费截止日期
+	} 
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7196319351455177885L;
+	
+	/**
+	 * 物业系统分配社区ID
+	 */
+	@NotEmpty
+	@Length(max=32)
+	@Column(unique=true	,nullable = false)
+	private String entryId;
 	
 	/**
 	 * 批次号
@@ -115,11 +130,11 @@ public class Bill extends OrderedEntity<Long>{
 	@Column(nullable = false)
 	private Date deadline;
 	
-	/**
-	 * 缴费明细条目关联ID。若物业系统业务约束上传的多条明细条目必须被一次同时支付，则对应的明细条目需传入同样的relate_id。
-	 */
-	@Length(max=64)
-	private String relateId;
+//	/**
+//	 * 缴费明细条目关联ID。若物业系统业务约束上传的多条明细条目必须被一次同时支付，则对应的明细条目需传入同样的relate_id。
+//	 */
+//	@Length(max=64)
+//	private String relateId;
 	
 	/**
 	 * 缴费支付确认页显示给用户的提示确认信息，除房间名外的第二重校验信息，预防用户错缴。建议传入和缴费户相关的信息
@@ -183,13 +198,13 @@ public class Bill extends OrderedEntity<Long>{
 		this.deadline = deadline;
 	}
 
-	public String getRelateId() {
-		return relateId;
-	}
-
-	public void setRelateId(String relateId) {
-		this.relateId = relateId;
-	}
+//	public String getRelateId() {
+//		return relateId;
+//	}
+//
+//	public void setRelateId(String relateId) {
+//		this.relateId = relateId;
+//	}
 
 	public String getRemarkStr() {
 		return remarkStr;
@@ -198,5 +213,12 @@ public class Bill extends OrderedEntity<Long>{
 	public void setRemarkStr(String remarkStr) {
 		this.remarkStr = remarkStr;
 	}
-	
+
+	public String getEntryId() {
+		return entryId;
+	}
+
+	public void setEntryId(String entryId) {
+		this.entryId = entryId;
+	}
 }

@@ -1,7 +1,5 @@
 package com.lmc.property.dao;
 
-import org.springframework.stereotype.Repository;
-
 import com.lmc.property.entity.Community;
 import com.lmc.property.entity.Room;
 

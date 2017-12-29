@@ -6,7 +6,6 @@
 package com.lmc.property.entity;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Transient;
@@ -23,7 +22,6 @@ import org.hibernate.validator.constraints.NotEmpty;
  * 
  * @author 李敏成
  */
-@Entity
 public class Admin extends User {
 
 	private static final long serialVersionUID = -4000007477538426L;

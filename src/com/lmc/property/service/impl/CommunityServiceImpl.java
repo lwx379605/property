@@ -12,6 +12,7 @@ import com.lmc.property.Setting;
 import com.lmc.property.dao.CommunityDao;
 import com.lmc.property.entity.Community;
 import com.lmc.property.entity.Constants;
+import com.lmc.property.service.AlipayService;
 import com.lmc.property.service.CommunityService;
 import com.lmc.property.utils.SystemUtils;
 
@@ -19,6 +20,8 @@ import com.lmc.property.utils.SystemUtils;
 public class CommunityServiceImpl extends BaseServiceImpl<Community, Long> implements CommunityService{
 	@Inject 
 	private CommunityDao communityDao;
+	@Inject 
+	AlipayService alipayService;
 	@Override
 	public void createCommunity(Community community) {
 

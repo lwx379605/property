@@ -30,6 +30,14 @@ public class Community extends OrderedEntity<Long>{
 	private static final long serialVersionUID = -5675818518232598723L;
 	
 	/**
+	 * 物业系统分配社区ID
+	 */
+	@NotEmpty
+	@Length(max=32)
+	@Column(unique=true	,nullable = false)
+	private String outCommunityId;
+	
+	/**
 	 * 小区名称，最长不超过32个字符。
 	 */
 	@NotEmpty
@@ -158,6 +166,20 @@ public class Community extends OrderedEntity<Long>{
 	public void setAliCommunityId(String aliCommunityId) {
 		this.aliCommunityId = aliCommunityId;
 	}
+	
+	public String getOutCommunityId() {
+		return outCommunityId;
+	}
+	public void setOutCommunityId(String outCommunityId) {
+		this.outCommunityId = outCommunityId;
+	}
+	public Set<Building> getBuildings() {
+		return buildings;
+	}
+	public void setBuildings(Set<Building> buildings) {
+		this.buildings = buildings;
+	}
+
 	@Converter
 	public static class CommunityConverter extends BaseAttributeConverter<List<String>> {
 	}

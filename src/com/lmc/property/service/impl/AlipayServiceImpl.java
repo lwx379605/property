@@ -1,5 +1,9 @@
 package com.lmc.property.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
 import com.alipay.api.AlipayApiException;
@@ -46,109 +50,6 @@ import com.lmc.property.utils.SystemUtils;
 @Component
 public class AlipayServiceImpl {
 	
-	public AlipayEcoCplifeCommunityCreateResponse creat(Community community) throws AlipayApiException {
-		Setting setting = SystemUtils.getSetting();
-		String appid = setting.getAppID();
-		String privateKey = setting.getPrivateKey();
-		String publicKey = setting.getPublicKey();
-		AlipayClient alipayClient = new DefaultAlipayClient(Constants.REQUEST_URL,appid,privateKey,"json","UTF-8",publicKey,"RSA2");
-		AlipayEcoCplifeCommunityCreateRequest request = new AlipayEcoCplifeCommunityCreateRequest();
-		request.setBizContent("{" +
-				"\"community_name\":\""+community.getCommunityName()+"\"," +
-				"\"community_address\":\""+community.getCommunityAddress()+"\"," +
-				"\"district_code\":\""+community.getDistrict()+"\"," +
-				"\"city_code\":"+community.getCity()+"," +
-				"\"province_code\":\""+community.getProvince()+"\"," +
-				"      \"community_locations\":[" +
-				"        \"116.678611|29.006537\"" +
-				"      ]," +
-//				"      \"associated_pois\":[" +
-//				"        \"B0FFF4A30C\"
-//				"      ]," +
-				"\"hotline\":\""+community.getHotline()+"\"," +
-				"\"out_community_id\":\""+community.getId()+"\""+
-				"  }");
-		return alipayClient.execute(request);
-	}
-	
-	public static  AlipayEcoCplifeCommunityModifyResponse modify(Community community) throws AlipayApiException {
-		Setting setting = SystemUtils.getSetting();
-		String appid = setting.getAppID();
-		String privateKey = setting.getPrivateKey();
-		String publicKey = setting.getPublicKey();
-		AlipayClient alipayClient = new DefaultAlipayClient(Constants.REQUEST_URL,appid,privateKey,"json","UTF-8",publicKey,"RSA2");
-		AlipayEcoCplifeCommunityModifyRequest request = new AlipayEcoCplifeCommunityModifyRequest();
-		// 如果是开发者代物业公司账号调用接口，必须传入物业给开发者授权的令牌
-//		request.putOtherTextParam("app_auth_token","请传入实际的第三方授权令牌值");
-
-		// 示例中通过string拼接json，实际项目建议用json库生成Json请求报文
-		request.setBizContent("{" +
-		"    \"community_id\":\""+community.getAliCommunityId()+"\"," +
-		"    \"community_name\":\""+community.getCommunityName()+"\"," +
-		"    \"community_address\":\""+community.getCommunityAddress()+"\"," +
-		"	\"district_code\":\""+community.getDistrict()+"\"," +
-		"	\"city_code\":\""+community.getCity()+"\"," +
-		"	\"province_code\":\""+community.getProvince()+"\"," +
-		"      \"community_locations\":[" +
-		"        \"116.678611|29.006537\"" +
-		"      ]," +
-		"      \"associated_pois\":[" +
-		"        \"B0FFF4A30C\"" +
-		"      ]," +
-		"    \"hotline\":\""+community.getHotline()+"\"," +
-		"    \"out_community_id\":\""+community.getId()+"\"" +
-		"  }");
-		return  alipayClient.execute(request);
-	}
-	
-	public static AlipayEcoCplifeRoominfoUploadResponse uploadRoominfo(String community_id,Room... rooms ) throws AlipayApiException {
-		Setting setting = SystemUtils.getSetting();
-		String appid = setting.getAppID();
-		String privateKey = setting.getPrivateKey();
-		String publicKey = setting.getPublicKey();
-		AlipayClient alipayClient = new DefaultAlipayClient(Constants.REQUEST_URL,appid,privateKey,"json","UTF-8",publicKey,"RSA2");
-		AlipayEcoCplifeRoominfoUploadRequest request = new AlipayEcoCplifeRoominfoUploadRequest();
-		StringBuffer sb =new StringBuffer();
-		for(Room room:rooms){
-			sb.append("{" +
-				"        \"out_room_id\":\""+room.getId()+"\"," +
-				"\"group\":\"一期\"," +
-				"\"building\":\"1栋\"," +
-				"\"unit\":\"1单元\"," +
-				"\"room\":\"1102室\"," +
-				"\"address\":\"一期1栋2单元2204室\"" +
-				"        },");
-		}
-		if(sb.length()==0){
-			return null;
-		}
-		request.setBizContent("{" +
-		"\"batch_id\":\"201609201730123756\"," +
-		"\"community_id\":\""+community_id+"\"," +
-		"      \"room_info_set\":["+sb.substring(0, sb.length()-1)+"]" +
-		"  }");
-		return alipayClient.execute(request);
-	}
-	
-	public static AlipayEcoCplifeBasicserviceInitializeResponse initBasicservice( ) throws AlipayApiException {
-		Setting setting = SystemUtils.getSetting();
-		String appid = setting.getAppID();
-		String privateKey = setting.getPrivateKey();
-		String publicKey = setting.getPublicKey();
-		AlipayClient alipayClient = new DefaultAlipayClient(Constants.REQUEST_URL,appid,privateKey,"json","UTF-8",publicKey,"RSA2");
-		AlipayEcoCplifeBasicserviceInitializeRequest request = new AlipayEcoCplifeBasicserviceInitializeRequest();
-		request.setBizContent("{" +
-		"\"community_id\":\"AWFWH94M33611\"," +
-		"\"service_type\":\"PROPERTY_PAY_BILL_MODE\"," +
-		//对于PROPERTY_PAY_BILL_MODE服务类型，该地址表示用户缴费支付完成后开发者系统接受支付结果通知的回调地址。
-		"\"external_invoke_address\":\"https://www.baidu.com\"," +
-//		"\"account_type\":\"ALIPAY_PARTNER_ID\"," +
-//		"\"account\":\"mxphsk4050@sandbox.com\"," +
-		"\"service_expires\":\"2017-12-31 23:59:59\"" +
-		"  }");
-		return  alipayClient.execute(request);
-	}
-	
 	public static AlipayEcoCplifeRoominfoDeleteResponse deleteRoominfo(String community_id ,Long... out_room_id_set) throws AlipayApiException {
 		Setting setting = SystemUtils.getSetting();
 		String appid = setting.getAppID();
@@ -156,57 +57,18 @@ public class AlipayServiceImpl {
 		String publicKey = setting.getPublicKey();
 		AlipayClient alipayClient = new DefaultAlipayClient(Constants.REQUEST_URL,appid,privateKey,"json","UTF-8",publicKey,"RSA2");
 		AlipayEcoCplifeRoominfoDeleteRequest request = new AlipayEcoCplifeRoominfoDeleteRequest();
-		StringBuffer sb =new StringBuffer();
-		for(Long out_room_id:out_room_id_set){
-			sb.append(out_room_id+",");
-		}
-		if(sb.length()==0){
-			return null;
-		}
 		request.setBizContent("{" +
 		"\"batch_id\":\"201609201730123754\"," +
 		"\"community_id\":\""+community_id+"\"," +
 		"      \"out_room_id_set\":[" +
-		"        \""+sb.substring(0, sb.length()-1)+"\"" +
+		"        \""+StringUtils.join(out_room_id_set,",")+"\"" +
 		"      ]" +
 		"  }");
 		return  alipayClient.execute(request);
 	}
-
-	public static AlipayEcoCplifeBillBatchUploadResponse batchUploadBill(String community_id,Bill... bills) throws AlipayApiException {
-		Setting setting = SystemUtils.getSetting();
-		String appid = setting.getAppID();
-		String privateKey = setting.getPrivateKey();
-		String publicKey = setting.getPublicKey();
-		AlipayClient alipayClient = new DefaultAlipayClient(Constants.REQUEST_URL,appid,privateKey,"json","UTF-8",publicKey,"RSA2");
-		AlipayEcoCplifeBillBatchUploadRequest request = new AlipayEcoCplifeBillBatchUploadRequest();
-		StringBuffer sb = new StringBuffer();
-		for (Bill bill:bills){
-			sb.append("{" +
-				"        \"bill_entry_id\":\""+bill.getId()+"\"," +
-				"\"out_room_id\":\""+bill.getRoom().getId()+"\"," +
-				//"\"room_address\":\"一期1栋2单元2204室\"," +
-				"\"cost_type\":\""+bill.getType()+"\"," +
-				"\"bill_entry_amount\":\"300.00\"," +
-				"\"acct_period\":\"2017年07月\"," +
-				"\"release_day\":\"20170701\"," +
-				"\"deadline\":\"20171231\"," +
-				//"\"relate_id\":\"1234\"," +
-				//"\"remark_str\":\"王*五\"" +
-				"},");
-		}
-		if(sb.length()==0){
-			return null;
-		}
-		request.setBizContent("{" +
-		"\"batch_id\":\""+null+"\"," +
-		"\"community_id\":\""+community_id+"\"," +
-		"      \"bill_set\":["+sb.substring(0, sb.length()-1)+"]" +
-		"  }");
-		return  alipayClient.execute(request);
-	}
 	
-	public static AlipayEcoCplifeBillBatchqueryResponse batchqueryBill(String community_id,Long out_room_id,Bill.Type type, int pageNum,int pageSize) throws AlipayApiException {
+	public static AlipayEcoCplifeBillBatchqueryResponse batchqueryBill(String community_id,Long out_room_id,Bill.Type type,Bill.Status status,Date acct_period,Date release_day, int pageNum,int pageSize) throws AlipayApiException {
+		SimpleDateFormat sf =new SimpleDateFormat("YYYYMMDD");
 		Setting setting = SystemUtils.getSetting();
 		String appid = setting.getAppID();
 		String privateKey = setting.getPrivateKey();
@@ -216,15 +78,18 @@ public class AlipayServiceImpl {
 		 
 //		// 如果是开发者代物业公司账号调用接口，必须传入物业给开发者授权的令牌
 //		request.putOtherTextParam("app_auth_token","请传入实际的第三方授权令牌值");
-		 
+		String  releaseDay = null;
+		if(release_day != null){
+			releaseDay = sf.format(release_day);
+		}
 		// 示例中通过string拼接json，实际项目建议用json库生成Json请求报文
 		request.setBizContent("{" +
 		"    \"community_id\":\""+community_id+"\"," +
-//		"    \"bill_status\":\"WAIT_PAYMENT \"," +
+		"    \"bill_status\":\""+status+" \"," +
 		"    \"out_room_id\":\""+out_room_id+"\"," +
 		"    \"cost_type\":\""+type+"\"," +
-//		"	 \"acct_period\":\"2017年07月\"," +
-//		"	 \"release_day\":\"20170701\"," +
+		"    \"acct_period\":\""+acct_period+"\"," +
+		"    \"release_day\":\""+releaseDay+"\"," +
 //		"    \"batch_id\":\"201607192119100001\"," +
 		"    \"page_num\":"+pageNum+"," +
 		"    \"page_size\":"+pageSize+"" +
@@ -253,6 +118,115 @@ public class AlipayServiceImpl {
 	}
 	
 	//ok
+	
+	public static AlipayEcoCplifeBillBatchUploadResponse batchUploadBill(String community_id,Bill... bills) throws AlipayApiException {
+		SimpleDateFormat sf =new SimpleDateFormat("YYYYMMDD");
+		Setting setting = SystemUtils.getSetting();
+		String appid = setting.getAppID();
+		String privateKey = setting.getPrivateKey();
+		String publicKey = setting.getPublicKey();
+		AlipayClient alipayClient = new DefaultAlipayClient(Constants.REQUEST_URL,appid,privateKey,"json","UTF-8",publicKey,"RSA2");
+		AlipayEcoCplifeBillBatchUploadRequest request = new AlipayEcoCplifeBillBatchUploadRequest();
+		StringBuffer sb = new StringBuffer();
+		for (Bill bill:bills){
+			sb.append("{" +
+				"        \"bill_entry_id\":\""+bill.getEntryId()+"\"," +
+				"\"out_room_id\":\""+bill.getRoom().getOutRoomId()+"\"," +
+				//"\"room_address\":\""+bill.getRoom().getAddress()()+"\"," +
+				"\"cost_type\":\""+bill.getType()+"\"," +
+				"\"bill_entry_amount\":\""+bill.getAmount().longValue()+"\"," +
+				"\"acct_period\":\""+bill.getAcctPeriod()+"\"," +
+				"\"release_day\":\""+sf.format(bill.getReleaseDay())+"\"," +
+				"\"deadline\":\""+sf.format(bill.getDeadline())+"\"," +
+				//"\"relate_id\":\""+null+"\"," +
+				//"\"remark_str\":\"王*五\"" +
+				"},");
+		}
+		if(sb.length()==0){
+			return null;
+		}
+		request.setBizContent("{" +
+		"\"batch_id\":\""+null+"\"," +
+		"\"community_id\":\""+community_id+"\"," +
+		"      \"bill_set\":["+sb.substring(0, sb.length()-1)+"]" +
+		"  }");
+		return  alipayClient.execute(request);
+	}
+	
+	public static AlipayEcoCplifeBasicserviceInitializeResponse initBasicservice(String  community_id,String invokeUrl,Date expire) throws AlipayApiException {
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Setting setting = SystemUtils.getSetting();
+		String appid = setting.getAppID();
+		String privateKey = setting.getPrivateKey();
+		String publicKey = setting.getPublicKey();
+		AlipayClient alipayClient = new DefaultAlipayClient(Constants.REQUEST_URL,appid,privateKey,"json","UTF-8",publicKey,"RSA2");
+		AlipayEcoCplifeBasicserviceInitializeRequest request = new AlipayEcoCplifeBasicserviceInitializeRequest();
+		request.setBizContent("{" +
+		"\"community_id\":\""+community_id+"\"," +
+		"\"service_type\":\"PROPERTY_PAY_BILL_MODE\"," +
+		//对于PROPERTY_PAY_BILL_MODE服务类型，该地址表示用户缴费支付完成后开发者系统接受支付结果通知的回调地址。
+		"\"external_invoke_address\":\""+invokeUrl+"\"," +
+//		"\"account_type\":\"ALIPAY_PARTNER_ID\"," +
+//		"\"account\":\"mxphsk4050@sandbox.com\"," +
+		"\"service_expires\":\""+sf.format(expire)+"\"" +
+		"  }");
+		return  alipayClient.execute(request);
+	}
+	
+	public static  AlipayEcoCplifeCommunityModifyResponse modify(Community community) throws AlipayApiException {
+		Setting setting = SystemUtils.getSetting();
+		String appid = setting.getAppID();
+		String privateKey = setting.getPrivateKey();
+		String publicKey = setting.getPublicKey();
+		AlipayClient alipayClient = new DefaultAlipayClient(Constants.REQUEST_URL,appid,privateKey,"json","UTF-8",publicKey,"RSA2");
+		AlipayEcoCplifeCommunityModifyRequest request = new AlipayEcoCplifeCommunityModifyRequest();
+		// 如果是开发者代物业公司账号调用接口，必须传入物业给开发者授权的令牌
+//		request.putOtherTextParam("app_auth_token","请传入实际的第三方授权令牌值");
+
+		// 示例中通过string拼接json，实际项目建议用json库生成Json请求报文
+		request.setBizContent("{" +
+		"    \"community_id\":\""+community.getAliCommunityId()+"\"," +
+		"    \"community_name\":\""+community.getCommunityName()+"\"," +
+		"    \"community_address\":\""+community.getCommunityAddress()+"\"," +
+		"	\"district_code\":\""+community.getDistrict()+"\"," +
+		"	\"city_code\":\""+community.getCity()+"\"," +
+		"	\"province_code\":\""+community.getProvince()+"\"," +
+		"      \"community_locations\":[" +
+		"        \""+StringUtils.join(community.getCommunityLocations(),",")+"\"" +
+		"      ]," +
+		"      \"associated_pois\":[" +
+		"        \""+StringUtils.join(community.getAssociatedPois(),",")+"\""+
+		"      ]," +
+		"    \"hotline\":\""+community.getHotline()+"\"," +
+		"    \"out_community_id\":\""+community.getOutCommunityId()+"\"" +
+		"  }");
+		return  alipayClient.execute(request);
+	}
+	
+	public static AlipayEcoCplifeCommunityCreateResponse creat(Community community) throws AlipayApiException {
+		Setting setting = SystemUtils.getSetting();
+		String appid = setting.getAppID();
+		String privateKey = setting.getPrivateKey();
+		String publicKey = setting.getPublicKey();
+		AlipayClient alipayClient = new DefaultAlipayClient(Constants.REQUEST_URL,appid,privateKey,"json","UTF-8",publicKey,"RSA2");
+		AlipayEcoCplifeCommunityCreateRequest request = new AlipayEcoCplifeCommunityCreateRequest();
+		request.setBizContent("{" +
+				"\"community_name\":\""+community.getCommunityName()+"\"," +
+				"\"community_address\":\""+community.getCommunityAddress()+"\"," +
+				"\"district_code\":\""+community.getDistrict()+"\"," +
+				"\"city_code\":"+community.getCity()+"," +
+				"\"province_code\":\""+community.getProvince()+"\"," +
+				"      \"community_locations\":[" +
+				"        \""+StringUtils.join(community.getCommunityLocations(),",")+"\"" +
+				"      ]," +
+				"      \"associated_pois\":[" +
+				"        \""+StringUtils.join(community.getAssociatedPois(),",")+"\""+
+				"      ]," +
+				"\"hotline\":\""+community.getHotline()+"\"," +
+				"\"out_community_id\":\""+community.getOutCommunityId()+"\""+
+				"  }");
+		return alipayClient.execute(request);
+	}
 	
 	public static AlipayEcoCplifeCommunityDetailsQueryResponse queryCommunityDetails(String community_id) throws AlipayApiException {
 		Setting setting = SystemUtils.getSetting();
@@ -309,6 +283,35 @@ public class AlipayServiceImpl {
 		"\"page_size\":"+pageSize+"" +
 		"  }");
 		return  alipayClient.execute(request);
+	}
+	
+	public static AlipayEcoCplifeRoominfoUploadResponse uploadRoominfo(String community_id,Room... rooms ) throws AlipayApiException {
+		Setting setting = SystemUtils.getSetting();
+		String appid = setting.getAppID();
+		String privateKey = setting.getPrivateKey();
+		String publicKey = setting.getPublicKey();
+		AlipayClient alipayClient = new DefaultAlipayClient(Constants.REQUEST_URL,appid,privateKey,"json","UTF-8",publicKey,"RSA2");
+		AlipayEcoCplifeRoominfoUploadRequest request = new AlipayEcoCplifeRoominfoUploadRequest();
+		StringBuffer sb =new StringBuffer();
+		for(Room room:rooms){
+			sb.append("{" +
+				"        \"out_room_id\":\""+room.getOutRoomId()+"\"," +
+				"\"group\":\""+room.getBuilding().getGroup()+"\"," +
+				"\"building\":\""+room.getBuilding().getNO()+"\"," +
+				"\"unit\":\""+room.getBuilding().getUnit()+"\"," +
+				"\"room\":\""+room.getRoomName()+"室\"," +
+				"\"address\":\""+room.getAddress()+"\"" +
+				"        },");
+		}
+		if(sb.length()==0){
+			return null;
+		}
+		request.setBizContent("{" +
+		"\"batch_id\":\"201609201730123756\"," +
+		"\"community_id\":\""+community_id+"\"," +
+		"      \"room_info_set\":["+sb.substring(0, sb.length()-1)+"]" +
+		"  }");
+		return alipayClient.execute(request);
 	}
 	
 //	public static void main(String[] args) throws AlipayApiException {

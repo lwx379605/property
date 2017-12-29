@@ -13,7 +13,6 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Transient;
@@ -145,9 +144,6 @@ public class Renter extends User {
 	 */
 	@Length(max = 200)
 	private String phone;
-	
-	@ManyToMany
-	private Set<Room> rooms=new HashSet<>();;
 
 	/**
 	 * 获取用户名
@@ -378,23 +374,6 @@ public class Renter extends User {
 	 */
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-	
-	/**
-	 * 房间号
-	 * @return rooms
-	 * 			    rooms
-	 */
-	public Set<Room> getRooms() {
-		return rooms;
-	}
-	
-	/**
-	 * 房间号
-	 * @param rooms
-	 */
-	public void setRooms(Set<Room> rooms) {
-		this.rooms = rooms;
 	}
 
 	@Override

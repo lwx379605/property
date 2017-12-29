@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.lmc.property.Page;
 import com.lmc.property.Pageable;
@@ -32,33 +33,34 @@ public class CommunityController extends BaseController {
 	public String list(Pageable pageable,ModelMap model) {
 		Page<Community> findPage = communityService.findPage(pageable);
 		model.addAttribute("page", findPage);
-		return null;
+		return "admin/community/list";
 	}
 	
 	@PostMapping("/create")
-	public String createCommunity(Community community){
+	public String createCommunity(Community community,RedirectAttributes redirectAttributes){
 		if(!isValid(community)){
 			return null;
 		};
 		communityService.createCommunity(community);
-		return null;
+		addFlashMessage(redirectAttributes, SUCCESS_MESSAGE);
+		return "redirect:list";
 	}
 	
 	@GetMapping("/edit")
 	public String editCommunity(Long id, ModelMap model){
 		Community community = communityService.find(id);
 		model.addAttribute("community", community);
-		return null;
+		return "admin/community/edit";
 	}
 	
 	@PostMapping("/update")
-	public String updateCommunity(Community community, ModelMap model){
+	public String updateCommunity(Community community,RedirectAttributes redirectAttributes){
 		if(!isValid(community)){
 			return null;
 		};
 		communityService.update(community);
-		model.addAttribute("community", community);
-		return null;
+		addFlashMessage(redirectAttributes, SUCCESS_MESSAGE);
+		return "redirect:list";
 	}
 	
 	@GetMapping("/delete")

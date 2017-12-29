@@ -1,7 +1,5 @@
 package com.lmc.property.dao;
 
-import org.springframework.stereotype.Repository;
-
 import com.lmc.property.entity.Community;
 
 public interface CommunityDao extends BaseDao<Community, Long> {

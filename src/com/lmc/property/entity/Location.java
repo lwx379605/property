@@ -62,4 +62,9 @@ public class Location {
 		return HashCodeBuilder.reflectionHashCode(this);
 	}
 	
+	@Override
+	public String toString() {
+		return longitude+"|"+latitude;
+	}
+	
 }
