@@ -1,11 +1,6 @@
 package com.lmc.property.entity;
 
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
@@ -39,19 +34,7 @@ public class Building extends OrderedEntity<Long>{
 	private int unit;
 	
 	@NotEmpty
-	@ManyToOne
-	private Community community;
-	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="building")
-	private Set<Room> rooms;
-	
-	public Set<Room> getRooms() {
-		return rooms;
-	}
-	
-	public void setRooms(Set<Room> rooms) {
-		this.rooms = rooms;
-	}
+	private String outCommunityId;
 
 	public String getGroup() {
 		return group;
@@ -77,12 +60,12 @@ public class Building extends OrderedEntity<Long>{
 		this.unit = unit;
 	}
 
-	public Community getCommunity() {
-		return community;
+	public String getOutCommunityId() {
+		return outCommunityId;
 	}
 
-	public void setCommunity(Community community) {
-		this.community = community;
+	public void setOutCommunityId(String outCommunityId) {
+		this.outCommunityId = outCommunityId;
 	}
 	
 }

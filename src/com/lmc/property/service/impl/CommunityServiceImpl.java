@@ -1,37 +1,51 @@
 package com.lmc.property.service.impl;
 
-import javax.inject.Inject;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.alipay.api.AlipayClient;
-import com.alipay.api.DefaultAlipayClient;
-import com.alipay.api.request.AlipayEcoCplifeCommunityCreateRequest;
-import com.alipay.api.response.AlipayEcoCplifeCommunityCreateResponse;
-import com.lmc.property.Setting;
-import com.lmc.property.dao.CommunityDao;
+import com.alipay.api.AlipayApiException;
+import com.alipay.api.domain.CPCommunitySet;
+import com.alipay.api.response.AlipayEcoCplifeCommunityBatchqueryResponse;
+import com.alipay.api.response.AlipayEcoCplifeCommunityModifyResponse;
+import com.lmc.property.Page;
+import com.lmc.property.Pageable;
 import com.lmc.property.entity.Community;
-import com.lmc.property.entity.Constants;
-import com.lmc.property.service.AlipayService;
+import com.lmc.property.entity.Status;
 import com.lmc.property.service.CommunityService;
-import com.lmc.property.utils.SystemUtils;
 
 @Service
 public class CommunityServiceImpl extends BaseServiceImpl<Community, Long> implements CommunityService{
-	@Inject 
-	private CommunityDao communityDao;
-	@Inject 
-	AlipayService alipayService;
-	@Override
-	public void createCommunity(Community community) {
 
-		
+	@Override
+	public void createCommunity(Community community) throws AlipayApiException {
+		AlipayServiceImpl.creat(community);	
+	}
+	
+	/**
+	 * 变更物业小区信息
+	 * @param community
+	 * @throws AlipayApiException
+	 */
+	@Override
+	public void modifyCommunity(Community community) throws AlipayApiException {
+		AlipayEcoCplifeCommunityModifyResponse apliResponse = AlipayServiceImpl.modify(community);
+		if(!apliResponse.isSuccess()){
+			throw new AlipayApiException(apliResponse.getMsg());
+		}
 	}
 
+	/**
+	 * 批量查询支付宝小区
+	 */
 	@Override
-	public void deleteCommunity(Long id) {
-		// TODO Auto-generated method stub
-		
+	public Page<CPCommunitySet> queryCommunitySns(Status status,Pageable pageable) throws AlipayApiException {
+		AlipayEcoCplifeCommunityBatchqueryResponse apliResponse = AlipayServiceImpl.batchQuerySn(status,pageable.getPageNumber(), pageable.getPageSize());
+		if(!apliResponse.isSuccess()){
+			throw new AlipayApiException(apliResponse.getMsg());
+		}
+		List<CPCommunitySet> communityList = apliResponse.getCommunityList();
+		return new Page<CPCommunitySet>(communityList, apliResponse.getTotalCommunityCount(), pageable);
 	}
 
 }

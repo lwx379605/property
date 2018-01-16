@@ -5,12 +5,14 @@ import java.util.Date;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.alipay.api.AlipayApiException;
 import com.lmc.property.exception.ResourceNotFoundException;
 import com.lmc.property.exception.UnauthorizedException;
 import com.lmc.property.utils.DateEditor;
@@ -56,6 +58,20 @@ public class BaseControllerAdvice {
 	public String exceptionHandler(TypeMismatchException typeMismatchException) {
 		return "common/error/type_mismatch";
 	}
+	
+	/**
+	 * 异常处理
+	 * 
+	 * @param typeMismatchException
+	 *            类型配比错误
+	 * @return 视图	 */
+	@ExceptionHandler(AlipayApiException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public String exceptionHandler(AlipayApiException alipayApiException,ModelMap data) {
+		data.put("errMsg", alipayApiException.getMessage());
+		return "common/error/alipay_error";
+	}
+
 
 	/**
 	 * 异常处理

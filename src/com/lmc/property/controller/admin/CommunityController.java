@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.alipay.api.AlipayApiException;
 import com.lmc.property.Page;
 import com.lmc.property.Pageable;
 import com.lmc.property.Results;
@@ -37,7 +38,7 @@ public class CommunityController extends BaseController {
 	}
 	
 	@PostMapping("/create")
-	public String createCommunity(Community community,RedirectAttributes redirectAttributes){
+	public String createCommunity(Community community,RedirectAttributes redirectAttributes) throws AlipayApiException{
 		if(!isValid(community)){
 			return null;
 		};
